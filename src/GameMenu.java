@@ -9,6 +9,7 @@ public class GameMenu {
             choice = input.nextInt();
             if (choice == 1) {
                 /* start game code */
+                PlayGame.start();
             } else if (choice == 2) {
                 System.out.println("""
                         Your goal to reach a total profit of *$1000* the fastest you can. You can do that by
