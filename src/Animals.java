@@ -1,26 +1,30 @@
 public class Animals {
-    String type, name;
-    int age, value;
+    String name, type;
+    int age, value, place;
+    public final String[] animalsArray = {"Pig", "Cow", "Goat", "Chicken", "Sheep", "Horse", "Dog", "Rabbit"};
     public Animals(){
-        type = "";
         name = "";
         age = 0;
         value = 0;
     }
-    public Animals(String animalType, String animalName, int animalAge){
-        type = animalType;
+    public Animals(String animalName, int animalPlace, int animalValue){
         name = animalName;
-        age = animalAge;
+        age = 1;
+        value = animalValue;
+        type = animalsArray[animalPlace];
     }
-
+    public void printAnimalInfo(){
+        System.out.println("Animal: " + this.getType());
+        System.out.println("Name: " + this.getName());
+        System.out.println("Age: " + this.getAge());
+        System.out.println("Value: " + this.getValue());
+    }
     public String getName(){
         return this.name;
     }
     public int getAge(){
         return this.age;
     }
-    public String getType(){
-        return this.type;
-    }
     public int getValue(){ return this.value;}
+    public String  getType(){ return this.type;}
 }
