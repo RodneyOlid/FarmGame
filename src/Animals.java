@@ -19,6 +19,23 @@ public class Animals {
         System.out.println("Age: " + this.getAge());
         System.out.println("Value: " + this.getValue());
     }
+    public int sellAnimal(Animals [] animalsArray, int place){
+        int gold;
+        gold = animalsArray[place].value;
+
+        return gold;
+    }
+    public Animals[] updateArray(Animals [] animalsArray, int position){
+        Animals[] myArray = new Animals[animalsArray.length - 1];
+        for(int x = 0, y = 0;  x < animalsArray.length; x++){
+            if (x == position){
+                continue;
+            }
+            myArray[y++] = animalsArray[x];
+        }
+
+        return myArray;
+    }
     public String getName(){
         return this.name;
     }
