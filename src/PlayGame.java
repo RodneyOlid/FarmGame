@@ -39,7 +39,7 @@ public class PlayGame {
                 System.out.println("Animals: " + animalTotal);
                 System.out.println("Plants: " + plantTotal);
                 System.out.println("What would you like to do today?");
-                System.out.println("1. Next day \n2. Check animals \n3. Check Plants \n4. Go to the market");
+                System.out.println("1.Next day \n2.Check animals \n3.Check Plants \n4.Go to the market");
                 choice = inputs.nextInt();
                 if (choice == 2) {
                     /* print out list of animals and details */
@@ -50,16 +50,18 @@ public class PlayGame {
                         System.out.println(i + 1);
                         animalsObjects[i].printAnimalInfo();
                     }
-                    System.out.println("Would you like to \n1.Feed your animals\n2.Sell them");
+                    System.out.println("Would you like to \n1.Feed your animals\n2.Sell them\n3.Go Back");
                     choice2 = inputs.nextInt();
                     if (choice2 == 1) {
                         System.out.println("You feed all your animals and they are happier now. \n");
 
-                    } else {
+                    } else if (choice2 == 2){
                         System.out.println("Which one would you like to sell: ");
                         choice3 = inputs.nextInt();
                         gold = sellStuff.sellAnimal(animalsObjects, choice3);
-                        animalsObjects = sellStuff.updateArray(animalsObjects, choice3);
+                        animalsObjects = sellStuff.updateAnimalArray(animalsObjects, choice3);
+                    } else if (choice2 == 3){
+                        choice = 0;
                     }
                 } else if (choice == 3) {
                     /* prints out list of plants and details */
