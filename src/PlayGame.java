@@ -8,12 +8,6 @@ public class PlayGame {
     static Scanner inputs = new Scanner(System.in);
 
     public static void start(){
-        Animals ani1 = new Animals("A1", 2, 25);
-        Animals ani2 = new Animals("A2", 1, 50);
-        Animals ani3 = new Animals("A3", 0, 100);
-        animalsObjects[0] = ani1;
-        animalsObjects[1] = ani2;
-        animalsObjects[2] = ani3;
         System.out.println("Hey you're a new face around here! What's your name? ");
         playerName = inputs.next();
         System.out.println("So you're name is " + playerName + ". Nice to meet you!");
@@ -34,6 +28,7 @@ public class PlayGame {
             while(choice != 1) {
                 animalTotal = countArrays.arrayAmt(animalsObjects);
                 plantTotal = countArrays.arrayAmt(plantsObjects);
+                System.out.println("");
                 System.out.println("Day: " + days);
                 System.out.println("Gold: " + gold);
                 System.out.println("Animals: " + animalTotal);
@@ -50,7 +45,7 @@ public class PlayGame {
                         System.out.println(i + 1);
                         animalsObjects[i].printAnimalInfo();
                     }
-                    System.out.println("Would you like to \n1.Feed your animals\n2.Sell them\n3.Go Back");
+                    System.out.println("\nWould you like to \n1.Feed your animals\n2.Sell them\n3.Go Back");
                     choice2 = inputs.nextInt();
                     if (choice2 == 1) {
                         System.out.println("You feed all your animals and they are happier now. \n");
@@ -58,7 +53,7 @@ public class PlayGame {
                     } else if (choice2 == 2){
                         System.out.println("Which one would you like to sell: ");
                         choice3 = inputs.nextInt();
-                        gold = sellStuff.sellAnimal(animalsObjects, choice3);
+                        gold += sellStuff.sellAnimal(animalsObjects, choice3);
                         animalsObjects = sellStuff.updateAnimalArray(animalsObjects, choice3);
                     } else if (choice2 == 3){
                         choice = 0;
@@ -72,14 +67,43 @@ public class PlayGame {
                         System.out.println(i + 1);
                         plantsObjects[i].printPlantInfo();
                     }
+                    System.out.println("\nWould you like to \n1.Water you plants\n2.Sell them\n3.Go Back");
+                    choice2 = inputs.nextInt();
+                    if (choice2 == 1) {
+                        System.out.println("You watered all your plants.\n");
+
+                    } else if (choice2 == 2){
+                        System.out.println("Which one would you like to sell: ");
+                        choice3 = inputs.nextInt();
+                        gold += sellStuff.sellPlant(plantsObjects, choice3);
+                        plantsObjects = sellStuff.updatePlantArray(plantsObjects, choice3);
+                    } else if (choice2 == 3){
+                        choice = 0;
+                    }
                 } else if(choice == 4) {
                     /* market code */
-                    System.out.println("You go to the market");
+                    System.out.println("You go to the market\n");
+                    System.out.println("What would you like to buy?\n1.Plants\n2.Animals\n3.Go Back");
+                    choice2 = inputs.nextInt();
+                    if(choice2 == 1){
+                        /* plant  shop code */
+                        gold -= Shop.buyPlant(plantsObjects, plantTotal, days);
+                    }else if(choice2 == 2){
+                        /* animal shop code */
+                        gold -= Shop.buyAnimal(animalsObjects, animalTotal, days);
+                    } else if(choice2 == 3){
+                        choice = 0;
+                    }
                 }
             }
             System.out.println("ZZZzzz \n");
             days++;
             choice = 0;
+            choice2 = 0;
+            choice3 = 0;
+            for(int i = 0; i < plantTotal; i++){
+                plantsObjects[i].updateValues();
+            }
         }while(gold < 1000);
         System.out.println("Congrats! You finally paid back the $1000 in a total of " + days + ". You continue your" +
                 "farming adventure for the rest of your life.");
