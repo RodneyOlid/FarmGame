@@ -1,6 +1,7 @@
 public class Animals {
-    String name, type;
-    int age, value, place;
+    public String name;
+    private String type;
+    public int age, value;
     public static final String[] animalsArray = {"Pig", "Cow", "Goat", "Chicken", "Sheep", "Horse", "Dog", "Rabbit"};
     public static final int [][] animalValues = {{10, 40}, {25, 80}, {5, 50}, {5, 15}, {10, 20}, {15, 40}, {5, 15}, {5, 10}};
     public Animals(){
@@ -31,4 +32,6 @@ public class Animals {
     }
     public int getValue(){ return this.value;}
     public String  getType(){ return this.type;}
+
 }
+

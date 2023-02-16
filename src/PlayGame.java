@@ -1,11 +1,11 @@
 import java.util.*;
 public class PlayGame {
-    static String farmName, playerName;
-    static int days = 1, animalTotal, plantTotal, choice, choice2, choice3;
-    static double gold = 100;
-    static Animals [] animalsObjects = new Animals[10];
-    static Plants [] plantsObjects = new Plants [10];
-    static Scanner inputs = new Scanner(System.in);
+    public static String farmName, playerName;
+    public static int days = 1, animalTotal, plantTotal, choice, choice2, choice3;
+    private static double gold = 100;
+    public static Animals [] animalsObjects = new Animals[10];
+    public static Plants [] plantsObjects = new Plants [10];
+    public static Scanner inputs = new Scanner(System.in);
 
     public static void start(){
         System.out.println("Hey you're a new face around here! What's your name? ");
@@ -102,7 +102,10 @@ public class PlayGame {
             choice2 = 0;
             choice3 = 0;
             for(int i = 0; i < plantTotal; i++){
-                plantsObjects[i].updateValues();
+                plantsObjects[i].updatePlantValues();
+            }
+            for(int j = 0;j < animalTotal; j++){
+                animalsObjects[j].updateAnimalValues();
             }
         }while(gold < 1000);
         System.out.println("Congrats! You finally paid back the $1000 in a total of " + days + ". You continue your" +

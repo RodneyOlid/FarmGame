@@ -1,6 +1,6 @@
 public class Plants {
-    String type;
-    int age, value, place;
+    public String type;
+    public int age, value, place;
     public static final String[] plantsArray = {"Wheat", "Corn", "Beans", "Potatoes", "Carrots", "Apples", "Melons", "Pumpkins"};
     public static final int [][] plantValues = {{10, 25}, {5, 30}, {5, 10}, {15, 20}, {10, 30}, {5, 10}, {10, 40}, {20, 50}};
     public Plants(){
@@ -11,7 +11,7 @@ public class Plants {
         type = plantsArray[plantPlace];
         place = plantValue;
     }
-    public void updateValues(){
+    public void updatePlantValues(){
         while(this.value < plantValues[this.place][1]) {
             this.value += 5;
         }
