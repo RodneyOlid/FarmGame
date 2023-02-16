@@ -4,7 +4,8 @@ public class GameMenu {
         int choice = 0;
         Scanner input = new Scanner(System.in);
         while (choice != 3) {
-            System.out.println("Welcome to *Farm Game*");
+            /* farming pun or something */
+            System.out.println("Welcome to Farm Plains" );
             System.out.println("1. Start\n2. Rules\n3. Quit");
             choice = input.nextInt();
             if (choice == 1) {

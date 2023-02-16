@@ -18,6 +18,17 @@ public class Shop {
         this.stock += amount;
     }
 
+
+    public void sell() {
+        if (this.stock > 0) {
+            int sales = rand.nextInt(this.stock) + 1;
+            this.stock -= sales;
+            this.revenue += sales;
+            System.out.println("Successful sale of " + sales + " items. Current stock: " + this.stock + ", Current revenue: " + this.revenue);
+        } else {
+            System.out.println("No items in stock. Unable to sell.");
+        }
+    }
     public static double buyAnimal(Animals [] animalArray, int position, int day){
         int choice;
         double gold;
@@ -104,16 +115,6 @@ public class Shop {
         plantArray[position] = new Plants(place, Plants.plantValues[place][0]);
         gold = Plants.plantValues[place][0];
         return gold;
-    }
-    public void sell() {
-        if (this.stock > 0) {
-            int sales = rand.nextInt(this.stock) + 1;
-            this.stock -= sales;
-            this.revenue += sales;
-            System.out.println("Successful sale of " + sales + " items. Current stock: " + this.stock + ", Current revenue: " + this.revenue);
-        } else {
-            System.out.println("No items in stock. Unable to sell.");
-        }
     }
 
 }

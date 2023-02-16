@@ -1,7 +1,13 @@
+import java.util.*;
 public class sellStuff {
-    public static int sellAnimal(Animals [] animalsArray, int place){
-        int gold;
-        gold = animalsArray[place - 1].value;
+    public static double sellAnimal(Animals [] animalsArray, int place){
+        Random rand = new Random();
+        double gold;
+        int bonus;
+        System.out.println("You sold " + animalsArray[place - 1].name + " for " + animalsArray[place - 1].value);
+        bonus = rand.nextInt(50);
+        System.out.println("You got an extra " + bonus + "!");
+        gold = animalsArray[place - 1].value + bonus;
 
         return gold;
     }
@@ -25,9 +31,14 @@ public class sellStuff {
         }
         return myArray;
     }
-    public static int sellPlant(Plants [] plantsArray, int place){
-        int gold;
-        gold = plantsArray[place - 1].value;
+    public static double sellPlant(Plants [] plantsArray, int place){
+        double gold;
+        int bonus;
+        Random rand = new Random();
+        bonus = rand.nextInt(50);
+        System.out.println("You sold " + plantsArray[place - 1].type + " for " + plantsArray[place - 1].value);
+        System.out.println("You got an extra " + bonus + "!");
+        gold = plantsArray[place - 1].value + bonus;
 
         return gold;
     }
