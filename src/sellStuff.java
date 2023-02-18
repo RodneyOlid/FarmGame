@@ -1,5 +1,7 @@
 import java.util.*;
+// By Rodney Olid
 public class sellStuff {
+    // Sells the animal or plant chosen and gives a random bonus
     public static double sellAnimal(Animals [] animalsArray, int place){
         Random rand = new Random();
         double gold;
@@ -11,6 +13,18 @@ public class sellStuff {
 
         return gold;
     }
+    public static double sellPlant(Plants [] plantsArray, int place){
+        double gold;
+        int bonus;
+        Random rand = new Random();
+        bonus = rand.nextInt(50);
+        System.out.println("You sold " + plantsArray[place - 1].type + " for " + plantsArray[place - 1].value);
+        System.out.println("You got an extra " + bonus + "!");
+        gold = plantsArray[place - 1].value + bonus;
+
+        return gold;
+    }
+    // Takes the array and removes the sold animal or plant. Returns the array
     public static Animals[] updateAnimalArray(Animals [] animalsArray, int position){
         Animals[] myArray = new Animals[animalsArray.length - 1];
         for(int x = 0, y = 0;  x < animalsArray.length; x++){
@@ -31,15 +45,5 @@ public class sellStuff {
         }
         return myArray;
     }
-    public static double sellPlant(Plants [] plantsArray, int place){
-        double gold;
-        int bonus;
-        Random rand = new Random();
-        bonus = rand.nextInt(50);
-        System.out.println("You sold " + plantsArray[place - 1].type + " for " + plantsArray[place - 1].value);
-        System.out.println("You got an extra " + bonus + "!");
-        gold = plantsArray[place - 1].value + bonus;
 
-        return gold;
-    }
 }

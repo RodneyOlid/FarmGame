@@ -1,12 +1,13 @@
 import java.util.*;
 public class PlayGame {
     public static String farmName, playerName;
-    public static int days = 1, animalTotal, plantTotal, choice, choice2, choice3;
+    public static int days = 1, animalTotal, plantTotal, choice, choice2, choice3, luckBonus;
     private static double gold = 100;
     public static Animals [] animalsObjects = new Animals[10];
     public static Plants [] plantsObjects = new Plants [10];
     public static Scanner inputs = new Scanner(System.in);
 
+    // By Rodney Olid
     public static void start(){
         System.out.println("Hey you're a new face around here! What's your name? ");
         playerName = inputs.next();
@@ -24,8 +25,12 @@ public class PlayGame {
                 come on by and I'll sell you anything you need.
                 """);
         System.out.println("\nWelcome to " + farmName);
+        // Main loop that plays the game until condition of 1000 gold has been met
         do{
             while(choice != 1) {
+                DailyFarmEventsWithLuck farmEvents = new DailyFarmEventsWithLuck();
+                String[] dailyEvents = farmEvents.generateDailyEvents();
+                int dailyLuck = farmEvents.generateDailyLuck();
                 animalTotal = countArrays.arrayAmt(animalsObjects);
                 plantTotal = countArrays.arrayAmt(plantsObjects);
                 System.out.println("");
@@ -33,6 +38,10 @@ public class PlayGame {
                 System.out.println("Gold: " + gold);
                 System.out.println("Animals: " + animalTotal);
                 System.out.println("Plants: " + plantTotal);
+                System.out.println("Today's events on the farm are:");
+                System.out.println("- Animal disease: " + dailyEvents[1]);
+                System.out.println("- Event: " + dailyEvents[2]);
+                System.out.println("Today's luck value is: " + dailyLuck);
                 System.out.println("What would you like to do today?");
                 System.out.println("1.Next day \n2.Check animals \n3.Check Plants \n4.Go to the market");
                 choice = inputs.nextInt();
@@ -53,7 +62,8 @@ public class PlayGame {
                     } else if (choice2 == 2){
                         System.out.println("Which one would you like to sell: ");
                         choice3 = inputs.nextInt();
-                        gold += sellStuff.sellAnimal(animalsObjects, choice3);
+                        luckBonus = dailyLuck / 100;
+                        gold += sellStuff.sellAnimal(animalsObjects, choice3) * luckBonus;
                         animalsObjects = sellStuff.updateAnimalArray(animalsObjects, choice3);
                     } else if (choice2 == 3){
                         choice = 0;
@@ -75,7 +85,8 @@ public class PlayGame {
                     } else if (choice2 == 2){
                         System.out.println("Which one would you like to sell: ");
                         choice3 = inputs.nextInt();
-                        gold += sellStuff.sellPlant(plantsObjects, choice3);
+                        luckBonus = dailyLuck / 100;
+                        gold += sellStuff.sellPlant(plantsObjects, choice3) * luckBonus;
                         plantsObjects = sellStuff.updatePlantArray(plantsObjects, choice3);
                     } else if (choice2 == 3){
                         choice = 0;

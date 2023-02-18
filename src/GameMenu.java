@@ -1,6 +1,6 @@
 import java.util.*;
 public class GameMenu {
-    public static void start() {
+    public static void Menu() {
         int choice = 0;
         Scanner input = new Scanner(System.in);
         while (choice != 3) {
@@ -13,7 +13,7 @@ public class GameMenu {
                 PlayGame.start();
             } else if (choice == 2) {
                 System.out.println("""
-                        Your goal to reach a total profit of *$1000* the fastest you can. You can do that by
+                        Your goal to reach a total profit of $1000 the fastest you can. You can do that by
                         growing plants and animals, then selling them at the market. You can also buy items you may need at
                         the market as well.""");
                 System.out.println("");

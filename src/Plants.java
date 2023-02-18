@@ -1,3 +1,4 @@
+// By Rodney Olid
 public class Plants {
     public String type;
     public int age, value, place;
@@ -11,6 +12,7 @@ public class Plants {
         type = plantsArray[plantPlace];
         place = plantValue;
     }
+    // Updates the Plants values until it reaches it max value
     public void updatePlantValues(){
         while(this.value < plantValues[this.place][1]) {
             this.value += 5;

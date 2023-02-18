@@ -1,7 +1,8 @@
+// By Rodney Olid
 public class Animals {
     public String name;
     private String type;
-    public int age, value;
+    public int age, value, place;
     public static final String[] animalsArray = {"Pig", "Cow", "Goat", "Chicken", "Sheep", "Horse", "Dog", "Rabbit"};
     public static final int [][] animalValues = {{10, 40}, {25, 80}, {5, 50}, {5, 15}, {10, 20}, {15, 40}, {5, 15}, {5, 10}};
     public Animals(){
@@ -11,9 +12,13 @@ public class Animals {
         age = 1;
         value = animalValue;
         type = animalsArray[animalPlace];
+        place = animalPlace;
     }
+    // updates the animals value util it reaches its maximum value
     public void updateAnimalValues(){
-        this.value += 5;
+        while(this.value < animalValues[this.place][1]) {
+            this.value += 5;
+        }
     }
     public void printAnimalInfo(){
         System.out.println("Animal: " + this.getType());
