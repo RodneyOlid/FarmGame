@@ -1,7 +1,7 @@
 import java.util.*;
 public class PlayGame {
     public static String farmName, playerName;
-    public static int days = 1, animalTotal, plantTotal, choice, choice2, choice3, luckBonus;
+    public static int days = 1, animalTotal, plantTotal, choice, choice2, choice3, luckBonus, month = 1, checkMonth;
     private static double gold = 100;
     public static Animals [] animalsObjects = new Animals[10];
     public static Plants [] plantsObjects = new Plants [10];
@@ -35,6 +35,7 @@ public class PlayGame {
                 plantTotal = countArrays.arrayAmt(plantsObjects);
                 System.out.println("");
                 System.out.println("Day: " + days);
+                Seasons.printSeason(month, days);
                 System.out.println("Gold: " + gold);
                 System.out.println("Animals: " + animalTotal);
                 System.out.println("Plants: " + plantTotal);
@@ -109,6 +110,14 @@ public class PlayGame {
             }
             System.out.println("ZZZzzz \n");
             days++;
+            if(month > 12){
+                month = 1;
+            }
+            checkMonth = days % 10;
+            if(checkMonth == 0){
+                month++;
+            }
+
             choice = 0;
             choice2 = 0;
             choice3 = 0;
